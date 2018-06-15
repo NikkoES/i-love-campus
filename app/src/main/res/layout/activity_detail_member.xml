@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".activity.LoginActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Nama"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text=":"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:id="@+id/txt_nama_member"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="Nikko Eka Saputra"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textColorBlack"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="ID Member"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text=":"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:id="@+id/txt_id_member"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="12345678"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textColorBlack"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Detail Ruang"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text=":"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:id="@+id/txt_detail_ruang"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="LAP 323"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textColorBlack"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Tipe Ruang"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text=":"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:id="@+id/txt_tipe_ruang"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="Regular"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textColorBlack"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Nomor HP"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text=":"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:id="@+id/txt_no_hp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="08988190546"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textColorBlack"/>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center|right"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/btn_whatsapp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/wa"
+                        android:layout_toLeftOf="@+id/btn_call"/>
+
+                    <ImageView
+                        android:id="@+id/btn_call"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginLeft="16dp"
+                        android:src="@drawable/tlpn"
+                        android:layout_alignParentRight="true"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Email"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text=":"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:id="@+id/txt_email"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="nikkoeka04@gmail.com"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textColorBlack"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Alamat"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text=":"
+                        android:gravity="left"
+                        android:textSize="16sp"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:id="@+id/txt_alamat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="Jalan Al-Falah Kp. Gunung RT.05/08, Duri Kosambi, Cengkareng, Jakarta"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textColorBlack"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </ScrollView>
+
+</LinearLayout>

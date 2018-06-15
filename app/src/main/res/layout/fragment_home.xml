@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/home_slider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/ci_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:paddingBottom="8dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="68dp">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/btn_lokasi_member"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="36dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="136dp"
+                        android:layout_height="88dp"
+                        android:src="@drawable/lokasi"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="18sp"
+                        android:text="Lokasi Member"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
