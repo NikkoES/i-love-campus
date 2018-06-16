@@ -155,9 +155,10 @@
                     android:id="@+id/btn_tutup_aplikasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
+                    android:background="@drawable/button_gray_round"
                     android:textColor="@color/textColorWhite"
                     android:text="Tutup Aplikasi"
+                    android:textAllCaps="true"
                     android:textStyle="bold"/>
 
                 <Button
@@ -165,9 +166,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@drawable/button_red_round"
                     android:textColor="@color/textColorWhite"
-                    android:text="keluar"
+                    android:text="keluar akun"
+                    android:textAllCaps="true"
                     android:textStyle="bold"/>
 
             </LinearLayout>

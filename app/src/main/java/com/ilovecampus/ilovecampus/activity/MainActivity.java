@@ -76,8 +76,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setTitle("I Love Campus");
-
         setupViewPager();
 
         apiService = UtilsApi.getAPIService();
@@ -124,6 +122,20 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
 //                fragment.updateColor(ContextCompat.getColor(MainActivity.this, colors[position]));
+                switch (position){
+                    case 0 : {
+                        getSupportActionBar().setTitle("I Love Campus");
+                        break;
+                    }
+                    case 1 : {
+                        getSupportActionBar().setTitle("Pencarian Member");
+                        break;
+                    }
+                    case 2 : {
+                        getSupportActionBar().setTitle("Detail Akun");
+                        break;
+                    }
+                }
 
                 if (!wasSelected)
                     viewPager.setCurrentItem(position);

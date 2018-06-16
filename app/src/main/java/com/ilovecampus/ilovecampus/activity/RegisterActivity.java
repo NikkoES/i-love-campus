@@ -129,16 +129,15 @@ public class RegisterActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_register)
     public void register(){
-        new AlertDialog.Builder(RegisterActivity.this)
-                .setTitle("Anda yakin ingin mendaftar ?")
-                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        loadingDaftar.show();
-                        if(TextUtils.isEmpty(etIdMember.getText().toString()) || TextUtils.isEmpty(etNama.getText().toString()) || TextUtils.isEmpty(etDetailRuang.getText().toString()) || TextUtils.isEmpty(etTipeRuang.getText().toString()) || TextUtils.isEmpty(etNoHp.getText().toString()) || TextUtils.isEmpty(etEmail.getText().toString()) || TextUtils.isEmpty(etAlamat.getText().toString()) || TextUtils.isEmpty(etPassword.getText().toString())){
-                            Toast.makeText(getApplicationContext(), "Data belum lengkap !", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
+        if(TextUtils.isEmpty(etIdMember.getText().toString()) || TextUtils.isEmpty(etNama.getText().toString()) || TextUtils.isEmpty(etDetailRuang.getText().toString()) || TextUtils.isEmpty(etTipeRuang.getText().toString()) || TextUtils.isEmpty(etNoHp.getText().toString()) || TextUtils.isEmpty(etEmail.getText().toString()) || TextUtils.isEmpty(etAlamat.getText().toString()) || TextUtils.isEmpty(etPassword.getText().toString())){
+            Toast.makeText(getApplicationContext(), "Data belum lengkap !", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            new AlertDialog.Builder(RegisterActivity.this)
+                    .setTitle("Anda yakin ingin mendaftar ?")
+                    .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
                             idMember = etIdMember.getText().toString();
                             nama = etNama.getText().toString();
                             detailRuang = etDetailRuang.getText().toString();
@@ -155,25 +154,27 @@ public class RegisterActivity extends AppCompatActivity {
                                 simpanData(idMember, nama, detailRuang, idRuang, noHp, email, alamat, password);
                             }
                         }
-                    }
-                })
-                .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    })
+                    .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                })
-                .setCancelable(false)
-                .show();
+                        }
+                    })
+                    .setCancelable(false)
+                    .show();
+        }
     }
 
     private void simpanData(String idMember, String nama, String detailRuang, String idRuang, String noHp, String email, String alamat, String password){
+        loadingDaftar.show();
         apiService.register(idMember, nama, detailRuang, idRuang, noHp, email, alamat, password, status)
                 .enqueue(new Callback<ResponsePost>() {
                     @Override
                     public void onResponse(Call<ResponsePost> call, Response<ResponsePost> response) {
                         if (response.isSuccessful()){
                             loadingDaftar.dismiss();
+                            Toast.makeText(getApplicationContext(), "Registrasi berhasil", Toast.LENGTH_SHORT).show();
                             finish();
                             overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                         } else {

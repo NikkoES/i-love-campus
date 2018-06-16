@@ -143,11 +143,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         mMap.setMyLocationEnabled(true);
 
-        //init my location
-        mo = new MarkerOptions().position(new LatLng(0, 0)).title("Lokasi saya");
-        marker =  mMap.addMarker(mo);
-
-        //init member location
         loadingDaftar.show();
         apiService.getAllLokasi().enqueue(new Callback<ResponseLokasi>() {
             @Override
@@ -165,6 +160,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     for(int i=0; i<listLokasi.size(); i++){
                         Lokasi lokasi = listLokasi.get(i);
 
+                        //init member location
                         if(!lokasi.getIdMember().equalsIgnoreCase(idMember)){
                             LatLng masjid = new LatLng(Double.parseDouble(lokasi.getLatitude()), Double.parseDouble(lokasi.getLongitude()));
                             mMap.addMarker(new MarkerOptions().position(masjid).title(lokasi.getNamaMember()).snippet("ID Member : "+lokasi.getIdMember()+"\n"+lokasi.getDetailRuang()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
@@ -200,6 +196,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                     return info;
                                 }
                             });
+                        }
+                        //init my location
+                        else{
+                            mo = new MarkerOptions().position(new LatLng(0,0)).title("Lokasi saya").icon(BitmapDescriptorFactory.fromBitmap(smallMarker));
+                            marker =  mMap.addMarker(mo);
                         }
                     }
                 }

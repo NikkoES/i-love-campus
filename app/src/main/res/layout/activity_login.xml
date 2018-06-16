@@ -66,7 +66,10 @@
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleDrawable="@drawable/toggle_pass"
+                        app:passwordToggleTint="@color/colorGray">
 
                         <EditText
                             android:id="@+id/et_password"
@@ -92,9 +95,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:background="@color/colorAccent"
+                        android:background="@drawable/button_blue_round"
                         android:textColor="@color/textColorWhite"
                         android:text="login"
+                        android:textAllCaps="true"
                         android:textStyle="bold"/>
 
                 </LinearLayout>

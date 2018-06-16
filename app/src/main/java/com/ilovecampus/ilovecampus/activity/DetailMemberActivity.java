@@ -38,7 +38,7 @@ public class DetailMemberActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Detail Member");
+        getSupportActionBar().setTitle("Detail Profile Member");
 
         txtIdMember.setText(getIntent().getStringExtra("id_member"));
         txtNamaMember.setText(getIntent().getStringExtra("nama_member"));

@@ -55,6 +55,11 @@ public interface BaseApiService {
                                    @Field("password") String password);
 
     @FormUrlEncoded
+    @POST("sms/json")
+    Call<ResponsePost> sendPassword(@Query("api_key") String apiKey, @Query("api_secret") String apiSecret,
+                                    @Field("from") String from, @Field("to") String to, @Field("text") String text);
+
+    @FormUrlEncoded
     @POST("lokasi/awal")
     Call<ResponsePost> tambahLokasiAwal(@Field("id_member") String idMember,
                                    @Field("latitude") String latitude,
