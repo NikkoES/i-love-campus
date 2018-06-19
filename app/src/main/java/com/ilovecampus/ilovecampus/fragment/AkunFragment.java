@@ -129,8 +129,7 @@ public class AkunFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         locationPref.removeData("userLocation");
-                        clearLocation();
-                        getActivity().finish();
+                        clearLocation("keluar");
                     }
                 })
                 .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
@@ -143,12 +142,21 @@ public class AkunFragment extends Fragment {
                 .show();
     }
 
-    private void clearLocation(){
+    private void clearLocation(final String kode){
         apiService.hapusLokasi(idMember)
                 .enqueue(new Callback<ResponsePost>() {
                     @Override
                     public void onResponse(Call<ResponsePost> call, Response<ResponsePost> response) {
-
+                        if(kode.equalsIgnoreCase("logout")){
+                            getActivity().finish();
+                            Intent intentLogin = new Intent(getActivity(), LoginActivity.class);
+                            startActivity(intentLogin);
+                            ((Activity) getContext()).overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                        }
+                        else{
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                        }
                     }
 
                     @Override
@@ -168,11 +176,7 @@ public class AkunFragment extends Fragment {
                         userDataPref.removeData("userProfile");
                         extrasDataPref.removeData("dataExtras");
                         locationPref.removeData("userLocation");
-                        clearLocation();
-                        getActivity().finish();
-                        Intent intentLogin = new Intent(getActivity(), LoginActivity.class);
-                        startActivity(intentLogin);
-                        ((Activity) getContext()).overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                        clearLocation("logout");
                     }
                 })
                 .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {

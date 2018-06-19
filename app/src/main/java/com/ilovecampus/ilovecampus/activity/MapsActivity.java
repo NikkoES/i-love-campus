@@ -225,23 +225,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         marker.setPosition(myCoordinates);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(myCoordinates));
 
-        apiService.updateLokasi(idMember, ""+location.getLatitude(), ""+location.getLongitude())
-                .enqueue(new Callback<ResponsePost>() {
-                    @Override
-                    public void onResponse(Call<ResponsePost> call, Response<ResponsePost> response) {
-                        if (response.isSuccessful()){
-
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(), "Gagal mengupdate lokasi !", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponsePost> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "Koneksi internet bermasalah !", Toast.LENGTH_SHORT).show();
-                    }
-                });
+//        apiService.updateLokasi(idMember, ""+location.getLatitude(), ""+location.getLongitude())
+//                .enqueue(new Callback<ResponsePost>() {
+//                    @Override
+//                    public void onResponse(Call<ResponsePost> call, Response<ResponsePost> response) {
+//                        if (response.isSuccessful()){
+//
+//                        }
+//                        else{
+//                            Toast.makeText(getApplicationContext(), "Gagal mengupdate lokasi !", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ResponsePost> call, Throwable t) {
+//                        Toast.makeText(getApplicationContext(), "Koneksi internet bermasalah !", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
     }
 
     @Override
@@ -309,6 +309,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     @Override
                     public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                         if (status == 1) {
+                            finish();
                             Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                             startActivity(myIntent);
                         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

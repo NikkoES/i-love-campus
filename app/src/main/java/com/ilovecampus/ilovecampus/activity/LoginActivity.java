@@ -57,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
         session = new SharedPreferencesUtils(this, "UserData");
         extras = new SharedPreferencesUtils(this, "ExtrasData");
 
+        getExtras();
+
         if(session.checkIfDataExists("userProfile")){
             finish();
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
@@ -92,8 +94,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(Call<ResponsePost> call, Response<ResponsePost> response) {
                         if (response.body().getData().equalsIgnoreCase("1")){
                             loadingDaftar.dismiss();
-                            getUserData(sIdMember);
                             getExtras();
+                            getUserData(sIdMember);
                         }
                         else {
                             loadingDaftar.dismiss();
@@ -132,6 +134,10 @@ public class LoginActivity extends AppCompatActivity {
 
                         session.storeData("userProfile", userProfile.toString());
 
+                        finish();
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(i);
+                        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                     }
                     catch (JSONException e) {
                         e.printStackTrace();
@@ -171,11 +177,6 @@ public class LoginActivity extends AppCompatActivity {
                         dataExtras.put("tentang", data.getTentang());
 
                         extras.storeData("dataExtras", dataExtras.toString());
-
-                        finish();
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i);
-                        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
                     }
                     catch (JSONException e) {

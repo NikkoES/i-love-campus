@@ -2,6 +2,7 @@ package com.ilovecampus.ilovecampus.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -64,14 +65,14 @@ public class DetailKampusActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Visi & Misi");
             layoutVisiMisi.setVisibility(View.VISIBLE);
             layoutTentangKampus.setVisibility(View.GONE);
-            txtVisi.setText(visi);
-            txtMisi.setText(misi);
+            txtVisi.setText(Html.fromHtml(visi));
+            txtMisi.setText(Html.fromHtml(misi));
         }
         else{
             getSupportActionBar().setTitle("Tentang Kampus");
             layoutVisiMisi.setVisibility(View.GONE);
             layoutTentangKampus.setVisibility(View.VISIBLE);
-            txtTentangKampus.setText(tentang);
+            txtTentangKampus.setText(Html.fromHtml(tentang));
         }
     }
 

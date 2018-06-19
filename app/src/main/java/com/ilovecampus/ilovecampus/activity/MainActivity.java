@@ -307,6 +307,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     @Override
                     public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                         if (status == 1) {
+                            finish();
                             Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                             startActivity(myIntent);
                         }
@@ -318,7 +319,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                        finish();
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
                         locationPref.clearAllData();
                     }
                 });

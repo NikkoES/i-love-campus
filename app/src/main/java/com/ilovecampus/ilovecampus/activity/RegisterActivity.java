@@ -147,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity {
                             alamat = etAlamat.getText().toString();
                             password = etPassword.getText().toString();
                             passwordDua = etPasswordDua.getText().toString();
-                            if(password!=passwordDua){
+                            if(!password.equalsIgnoreCase(passwordDua)){
                                 Toast.makeText(getApplicationContext(), "Password tidak match !", Toast.LENGTH_SHORT).show();
                             }
                             else{

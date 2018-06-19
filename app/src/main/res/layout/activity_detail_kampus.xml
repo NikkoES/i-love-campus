@@ -44,7 +44,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textColor="@color/textColorBlack"/>
 
@@ -63,7 +62,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textColor="@color/textColorBlack"/>
 
@@ -89,7 +87,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:textAllCaps="true"
                         android:textSize="16sp"
                         android:textColor="@color/textColorBlack"/>
 

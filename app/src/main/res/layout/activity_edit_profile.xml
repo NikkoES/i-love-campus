@@ -107,7 +107,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="phone"
                         android:maxLength="13"
-                        android:hint="Nomor HP" />
+                        android:hint="Nomor HP (Kode Negara)" />
 
                 </android.support.design.widget.TextInputLayout>
 

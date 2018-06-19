@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -13,8 +14,8 @@ import com.ilovecampus.ilovecampus.R;
 import com.ilovecampus.ilovecampus.api.BaseApiService;
 import com.ilovecampus.ilovecampus.api.UtilsApi;
 import com.ilovecampus.ilovecampus.model.data.Member;
-import com.ilovecampus.ilovecampus.model.response.ResponsePost;
 import com.ilovecampus.ilovecampus.model.response.ResponseUser;
+import com.ilovecampus.ilovecampus.utils.GmailSender;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -104,32 +105,41 @@ public class LupaPasswordActivity extends AppCompatActivity {
                 });
     }
 
-    private void sendPassword(String idMember, String email, String password){
-//        apiService.sendPassword("aecf75ca", "Rd9wFsYI79xI0p8j", "I Love Campus Admin", noHp, "Password I Love Campus kamu adalah : "+password)
-//                .enqueue(new Callback<ResponsePost>() {
-//                    @Override
-//                    public void onResponse(Call<ResponsePost> call, Response<ResponsePost> response) {
-//                        if (response.isSuccessful()){
-//                            loadingDaftar.dismiss();
-//                            Toast.makeText(getApplicationContext(), "Password berhasil dikirim", Toast.LENGTH_SHORT).show();
-//                            finish();
-//                            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-//                        }else {
-//                            loadingDaftar.dismiss();
-//                            Toast.makeText(getApplicationContext(), "Password tidak berhasil dikirim !", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<ResponsePost> call, Throwable t) {
-//                        loadingDaftar.dismiss();
-//                        Toast.makeText(getApplicationContext(), "Koneksi internet bermasalah !", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+    private void sendPassword(final String idMember, final String email, final String password){
+        final String emailAdmin = "pujilestariku1992@gmail.com";
+        final String passwordAdmin = "pujilestariku92";
         loadingDaftar.dismiss();
-        Toast.makeText(this, "Password anda adalah : "+password, Toast.LENGTH_LONG).show();
-        finish();
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        final ProgressDialog dialog = new ProgressDialog(LupaPasswordActivity.this);
+        dialog.setTitle("Sending Email");
+        dialog.setMessage("Please wait");
+        dialog.show();
+        Thread sender = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    GmailSender sender = new GmailSender(emailAdmin, passwordAdmin);
+                    sender.sendMail("Password Member I Love Campus",
+                            "Berikut adalah data akun anda : \n" +
+                                    "ID Member : "+idMember+"\n" +
+                                    "Password : "+password,
+                            emailAdmin,
+                            email);
+                    dialog.dismiss();
+                    finish();
+                    Toast.makeText(LupaPasswordActivity.this, "Password berhasil dikirim", Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e) {
+                    Log.e("mylog", "Error: " + e.getMessage());
+                    dialog.dismiss();
+                    Toast.makeText(LupaPasswordActivity.this, "Password gagal dikirim !", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        sender.start();
+    }
+
+    private void sendMessage() {
+
     }
 
     @OnClick(R.id.btn_to_login)
