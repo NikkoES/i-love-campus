@@ -165,7 +165,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     dataExtras = new JSONObject();
                     try {
-                        String sliderUrl = "https://ilovecampus.000webhostapp.com/images/slider/";
+                        String sliderUrl = "http://dataku.my.id/images/slider/";
 
                         dataExtras.put("slider_1", sliderUrl + data.getSliderSatu());
                         dataExtras.put("slider_2", sliderUrl + data.getSliderDua());

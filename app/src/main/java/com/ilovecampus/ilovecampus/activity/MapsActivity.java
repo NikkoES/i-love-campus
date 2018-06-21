@@ -3,6 +3,7 @@ package com.ilovecampus.ilovecampus.activity;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,6 +21,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -147,7 +149,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         apiService.getAllLokasi().enqueue(new Callback<ResponseLokasi>() {
             @Override
             public void onResponse(Call<ResponseLokasi> call, Response<ResponseLokasi> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     listLokasi = response.body().getListLokasi();
                     loadingDaftar.dismiss();
 
@@ -157,15 +159,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     Bitmap b = bitmapdraw.getBitmap();
                     Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
 
-                    for(int i=0; i<listLokasi.size(); i++){
+                    for (int i = 0; i < listLokasi.size(); i++) {
                         Lokasi lokasi = listLokasi.get(i);
 
                         //init member location
-                        if(!lokasi.getIdMember().equalsIgnoreCase(idMember)){
-                            LatLng masjid = new LatLng(Double.parseDouble(lokasi.getLatitude()), Double.parseDouble(lokasi.getLongitude()));
-                            mMap.addMarker(new MarkerOptions().position(masjid).title(lokasi.getNamaMember()).snippet("ID Member : "+lokasi.getIdMember()+"\n"+lokasi.getDetailRuang()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
-                            CameraPosition cameraPosition = new CameraPosition.Builder().target(masjid).zoom(12).build();
-                            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                        if (!lokasi.getIdMember().equalsIgnoreCase(idMember)) {
+                            LatLng lokasiMember = new LatLng(Double.parseDouble(lokasi.getLatitude()), Double.parseDouble(lokasi.getLongitude()));
+                            mMap.addMarker(new MarkerOptions().position(lokasiMember).title(lokasi.getNamaMember()).snippet("ID Member : " + lokasi.getIdMember() + "\n" + lokasi.getDetailRuang()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
+//                            CameraPosition cameraPosition = new CameraPosition.Builder().target(lokasiMember).zoom(12).build();
+//                            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                             mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 
                                 @Override
@@ -197,12 +199,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 }
                             });
                         }
-                        //init my location
-                        else{
-                            mo = new MarkerOptions().position(new LatLng(0,0)).title("Lokasi saya").icon(BitmapDescriptorFactory.fromBitmap(smallMarker));
-                            marker =  mMap.addMarker(mo);
-                        }
                     }
+
+                    //init my location
+                    locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+                    if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+                    Location myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    LatLng lokasiMember = new LatLng(myLocation.getLatitude(),myLocation.getLongitude());
+                    mo = new MarkerOptions().position(lokasiMember).title("Lokasi saya").icon(BitmapDescriptorFactory.fromBitmap(smallMarker));
+                    marker = mMap.addMarker(mo);
+                    CameraPosition cameraPosition = new CameraPosition.Builder().target(lokasiMember).zoom(12).build();
+                    mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 }
                 else {
                     loadingDaftar.dismiss();
@@ -221,10 +230,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onLocationChanged(Location location) {
-        LatLng myCoordinates = new LatLng(location.getLatitude(), location.getLongitude());
-        marker.setPosition(myCoordinates);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(myCoordinates));
-
+//        LatLng myCoordinates = new LatLng(location.getLatitude(), location.getLongitude());
+//        marker.setPosition(myCoordinates);
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(myCoordinates));
 //        apiService.updateLokasi(idMember, ""+location.getLatitude(), ""+location.getLongitude())
 //                .enqueue(new Callback<ResponsePost>() {
 //                    @Override

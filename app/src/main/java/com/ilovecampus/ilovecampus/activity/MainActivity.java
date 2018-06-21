@@ -1,6 +1,7 @@
 package com.ilovecampus.ilovecampus.activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -150,6 +151,27 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         });
 
         initLocation();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        clearLocation();
+    }
+
+    private void clearLocation(){
+        apiService.hapusLokasi(idMember)
+                .enqueue(new Callback<ResponsePost>() {
+                    @Override
+                    public void onResponse(Call<ResponsePost> call, Response<ResponsePost> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponsePost> call, Throwable t) {
+
+                    }
+                });
     }
 
     private void checkPermit(){
